@@ -31,11 +31,14 @@ app.get('/health', (req, res) => {
 
 /**
  * GET /api/dashboard/data
- * Returns current dashboard data for specified mode
+ * Returns current dashboard data for the active mode
+ * Query params:
+ *   - mode (optional): Override the current mode for this request only
  */
 app.get('/api/dashboard/data', async (req, res, next) => {
   try {
-    const mode = req.query.mode || 'personal';
+    // Use query param mode if provided, otherwise use scheduler's current mode
+    const mode = req.query.mode || scheduler.getMode();
 
     if (!isValidMode(mode)) {
       return res.status(400).json({
@@ -50,6 +53,7 @@ app.get('/api/dashboard/data', async (req, res, next) => {
     res.json({
       success: true,
       data: data,
+      currentMode: scheduler.getMode(), // Include what mode the scheduler is in
       timestamp: new Date().toISOString()
     });
   } catch (error) {
