@@ -5,6 +5,11 @@ node_modules/
 .env
 .env.local
 
+# Secrets and credentials
+service-account-key.json
+*-key.json
+*.pem
+
 # Logs
 logs
 *.log
