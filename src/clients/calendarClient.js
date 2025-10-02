@@ -1,5 +1,6 @@
 const { google } = require('googleapis');
 const fs = require('fs');
+const path = require('path');
 
 let calendarClient = null;
 
@@ -19,13 +20,22 @@ function initializeCalendarClient() {
     return null;
   }
 
-  if (!fs.existsSync(keyPath)) {
-    console.warn(`⚠️  Google Calendar service account key not found at: ${keyPath}`);
+  // Resolve to absolute path (handles both relative and absolute paths)
+  const absoluteKeyPath = path.isAbsolute(keyPath)
+    ? keyPath
+    : path.resolve(process.cwd(), keyPath);
+
+  console.log(`🔍 Looking for service account key at: ${absoluteKeyPath}`);
+
+  if (!fs.existsSync(absoluteKeyPath)) {
+    console.warn(`⚠️  Google Calendar service account key not found at: ${absoluteKeyPath}`);
     return null;
   }
 
   try {
-    const keyFile = require(keyPath);
+    // Read and parse JSON file instead of using require()
+    const keyFileContent = fs.readFileSync(absoluteKeyPath, 'utf8');
+    const keyFile = JSON.parse(keyFileContent);
 
     const auth = new google.auth.GoogleAuth({
       credentials: keyFile,
@@ -37,6 +47,7 @@ function initializeCalendarClient() {
     return calendarClient;
   } catch (error) {
     console.error('❌ Failed to initialize Google Calendar client:', error.message);
+    console.error('   Error details:', error);
     return null;
   }
 }
