@@ -25,7 +25,7 @@ class WebSocketHandler {
       this.sendToSocket(ws, {
         event: 'connection',
         data: {
-          message: 'Connected to Living Art BFF',
+          message: 'Connected to TV Dashboard API',
           clientId: clientId
         }
       });

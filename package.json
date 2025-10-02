@@ -1,5 +1,5 @@
 {
-  "name": "living-art-bff",
+  "name": "tvdashapi",
   "version": "1.0.0",
   "description": "BFF API for React TV dashboard with WebSocket support",
   "main": "src/server.js",

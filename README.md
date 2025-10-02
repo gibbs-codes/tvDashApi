@@ -1,4 +1,4 @@
-# Living Art BFF API
+# TV Dashboard API
 
 Backend-for-Frontend (BFF) API for the React TV dashboard. This API aggregates data from multiple sources (weather, calendar, todos, local events) and pushes real-time updates to connected clients via WebSocket.
 
@@ -17,7 +17,7 @@ Backend-for-Frontend (BFF) API for the React TV dashboard. This API aggregates d
 ```bash
 # 1. Clone and install
 git clone <repository-url>
-cd living-art-bff
+cd tvDashApi
 npm install
 
 # 2. Set up environment
@@ -28,12 +28,12 @@ cp .env.example .env
 npm run dev
 ```
 
-Server will start on http://localhost:3001 with WebSocket on ws://localhost:3001
+Server will start on http://localhost:3006 with WebSocket on ws://localhost:3006
 
 ## Project Structure
 
 ```
-living-art-bff/
+tvDashApi/
 ├── src/
 │   ├── server.js              # Main Express + WebSocket server
 │   ├── wsHandler.js           # WebSocket connection manager (singleton)
@@ -254,7 +254,7 @@ Immediately refresh dashboard data and return updated values.
 
 ### Connection
 
-Connect to `ws://localhost:3001`
+Connect to `ws://localhost:3006`
 
 Upon connection, server sends:
 ```json
@@ -349,13 +349,13 @@ See [DEVELOPMENT.md](./DEVELOPMENT.md) for detailed instructions.
 
 ```bash
 # Test weather API
-curl "http://localhost:3001/api/dashboard/data?mode=weather"
+curl "http://localhost:3006/api/dashboard/data?mode=weather"
 
 # Test calendar (check logs for connection status)
-curl "http://localhost:3001/api/dashboard/data?mode=briefing"
+curl "http://localhost:3006/api/dashboard/data?mode=briefing"
 
 # Test todos
-curl "http://localhost:3001/api/dashboard/data?mode=personal"
+curl "http://localhost:3006/api/dashboard/data?mode=personal"
 ```
 
 ### Debugging

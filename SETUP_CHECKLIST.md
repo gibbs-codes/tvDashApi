@@ -1,6 +1,6 @@
 # Setup Checklist
 
-Follow this checklist to get your Living Art BFF API up and running.
+Follow this checklist to get your TV Dashboard API API up and running.
 
 ## Prerequisites
 
@@ -14,7 +14,7 @@ Follow this checklist to get your Living Art BFF API up and running.
 - [ ] Clone the repository
   ```bash
   git clone <repository-url>
-  cd living-art-bff
+  cd tvDashApi
   ```
 
 - [ ] Install dependencies
@@ -265,4 +265,4 @@ wscat -c ws://localhost:3001
 
 ---
 
-**Congratulations!** 🎉 Your Living Art BFF API is now set up and running!
+**Congratulations!** 🎉 Your TV Dashboard API API is now set up and running!

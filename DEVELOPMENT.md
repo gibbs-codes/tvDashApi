@@ -1,6 +1,6 @@
 # Development Guide
 
-This document provides technical details for developers working on the Living Art BFF API.
+This document provides technical details for developers working on the TV Dashboard API API.
 
 ## Architecture Overview
 
