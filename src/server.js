@@ -39,8 +39,8 @@ app.use(cors({
       return callback(null, true);
     }
 
-    // Allow hostnames ending in "-mac-mini" (Tailscale)
-    if (/^https?:\/\/[\w-]+-mac-mini(:\d+)?$/.test(origin)) {
+    // Allow hostnames ending in "-mac-mini" or "-mac-mini.local" (Tailscale/mDNS)
+    if (/^https?:\/\/[\w-]+-mac-mini(\.local)?(:\d+)?$/.test(origin)) {
       return callback(null, true);
     }
 
